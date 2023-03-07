@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Dashboard Axon</title>
+
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+		<script th:src="'charts.js?ver=' + ${ver}"></script> 
+		<link rel="stylesheet" th:href="'style.css?ver=' + ${ver}">
+	</head>
+
+	<body>
+	
+	
+		<div class='dashboard-controls' style='text-align: right;'>
+			<a href='/logout' style='color: #000; font-size: 12px; text-decoration: none;'>Logout</a>
+		</div>
+		
+		<h1>Dashboard Axon</h1>
+		
+
+	
+		<div class='dashboard-controls'>
+		
+			
+			
+			
+			
+			
+			
+			
+			
+			<div class='dashboard-controls-reg'>
+				<div class='dashboard-controls-label'>Zona:</div>	
+				<div class='dashboard-controls-value'>
+					<select id='video' onchange='javascript: drawCharts();'>
+						<option id="video" value=''>Todos</option>
+						
+						<option th:each="video: ${videos}" th:value="${video[0]}" th:utext="${video[1]}" />
+					</select>
+				</div>	
+			</div>
+			
+				
+			<div class='dashboard-controls-reg'>
+				<div class='dashboard-controls-label'>Subestación</div>	
+				<div class='dashboard-controls-value'>
+					<select id='subestacion' onchange='javascript: drawCharts();'>
+						<option id="subestacion" value=''>Todos</option>
+						
+						<option th:each="subestacion: ${subestaciones}" th:value="${subestacion[0]}" th:utext="${subestacion[1]}" />
+					</select>
+				</div>	
+			</div>
+			<div class='dashboard-controls-reg'>
+				<div class='dashboard-controls-label'>Nivel de tension [KV]</div>	
+				<div class='dashboard-controls-value'>
+					<select id='nivel' onchange='javascript: drawCharts();'>
+						<option id="nivel" value=''>Todos</option>
+						
+						<option th:each="nivel: ${tensiones}" th:value="${nivel[0]}" th:utext="${nivel[1]}" />
+					</select>
+				</div>	
+			</div>
+			<div class='clear'>&nbsp;</div>			
+		</div>		
+
+		<div class="dashboard-wrapper">
+			<div id='p1' class='panel'><h2>Demanda no atendida por cada Subestación</h2> <div id='p1Chart'></div> </div>
+		</div>
+
+		<div class='bottom'><a target='_blank' href='Santiago Tocasuchil'>Made by Santiago Tocasuchil</a></div>
+	</body>
+</html>
